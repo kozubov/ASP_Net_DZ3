@@ -1,0 +1,44 @@
+﻿@using ASP_3.Models
+@model ASP_3.Models.ModelRole
+@{
+    Layout = null;
+    Role role = ViewBag.Role;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/Style.css" />
+    <title>Edit Role</title>
+</head>
+<body>
+    
+    <div class="form_user">
+        <div class="title_form">
+            <h1>Edit Role</h1>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            if (role != null)
+            {
+                <div class="section">
+                    <p>Role* </p>
+                    <div class="Text">@Html.TextBox("Name", role.Name)</div>
+                </div>
+                <div class="button">
+                    <input type="submit" name="@role.Id" value="Save Role" />
+                </div>
+            }
+        }
+    </div>
+<div class="menu">
+    @Html.RouteLink("Add User", new { controller = "Home", action = "Index" })
+    @Html.RouteLink("Users List", new { controller = "Home", action = "ShowUsers" })
+    @Html.ActionLink("Add Role", "Index")
+    @Html.ActionLink("Roles List", "ShowRole")
+</div>
+</body>
+</html>

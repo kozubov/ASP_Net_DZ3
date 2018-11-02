@@ -1,0 +1,38 @@
+﻿@model ASP_3.Models.ModelRole
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/Style.css"/>
+    <title>Add Role</title>
+</head>
+<body>
+<div class="form_user">
+    <div class="title_form">
+        <h1>Add Role</h1>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <div class="section">
+            <p>Role* </p>
+            <div class="Text">@Html.TextBoxFor(x => x.Name)</div>
+        </div>
+        <div class="button">
+            <input type="submit" value="Add Role"/>
+        </div>
+    }
+</div>
+<div class="menu">
+    @Html.RouteLink("Add User", new { controller = "Home", action = "Index" })
+    @Html.RouteLink("Users List", new { controller = "Home", action = "ShowUsers" })
+    @Html.ActionLink("Add Role", "Index")
+    @Html.ActionLink("Roles List", "ShowRole")
+</div>
+</body>
+</html>

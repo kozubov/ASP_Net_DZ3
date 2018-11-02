@@ -1,0 +1,41 @@
+﻿@using ASP_3.Models;
+@{
+    Layout = null;
+    User User = ViewBag.user;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/Style.css" />
+    <title>More Info About User</title>
+</head>
+<body>
+<div>
+    @if (User != null)
+    {
+        <div class="title_form">
+            <h1>@User.FirstName @User.LastName</h1>
+        </div>
+        <div class="div_table">
+            <h3>Login: @User.Login</h3>
+            <h3>Email: @User.Email</h3>
+            <h3>Password: @User.Password</h3>
+            <h3>Phone: @User.Phone</h3>
+            @if (User.Role != null)
+            {
+                <h3>Role: @User.Role.Name</h3>
+            }
+        </div>
+    }
+</div>
+<div class="menu">
+    @Html.ActionLink("Add User", "Index")
+    @Html.ActionLink("Users List", "ShowUsers")
+    @Html.RouteLink("Add Role", new { controller = "Role", action = "Index" })
+    @Html.RouteLink("Roles List", new { controller = "Role", action = "ShowRole" })
+</div>
+</body>
+</html>

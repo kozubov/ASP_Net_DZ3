@@ -1,0 +1,66 @@
+﻿@using ASP_3.Models
+@model ASP_3.Models.ModelUser
+@{
+    Layout = null;
+    IEnumerable<SelectListItem> Roles = ViewBag.item;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Cuprum:400,400i,700,700i&amp;subset=cyrillic" rel="stylesheet" />
+    <link rel="stylesheet" href="~/CSS/Style.css" />
+    <title>Add User</title>
+</head>
+<body>
+<div class="form_user">
+    <div class="title_form">
+        <h1>Add User</h1>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <div class="section">
+            <p>First Name*</p>
+            <div class="Text">@Html.TextBoxFor(x => x.FirstName)</div>
+        </div>
+        <div class="section">
+            <p>Last Name*</p>
+            <div class="Text">@Html.TextBoxFor(x => x.LastName)</div>
+        </div>
+        <div class="section">
+            <p>Login* </p>
+            <div class="Text">@Html.TextBoxFor(x => x.Login)</div>
+        </div>
+        <div class="section">
+            <p>Password* </p>
+            <div class="Text">@Html.TextBoxFor(x => x.Password)</div>
+        </div>
+        <div class="section">
+            <p>Email* </p>
+            <div class="Text">@Html.TextBoxFor(x => x.Email)</div>
+        </div>
+        <div class="section">
+            <p>Phone* </p>
+            <div class="Text">@Html.TextBoxFor(x => x.Phone)</div>
+        </div>
+        <div class="section">
+            <p>Role* </p>
+            <div class="Text">@Html.DropDownListFor(x => x.role, Roles)</div>
+        </div>
+        <div class="button">
+            <input type="submit" Value="Add User"/>
+        </div>
+    }
+</div>
+<div class="menu">
+    @Html.ActionLink("Add User", "Index")
+    @Html.ActionLink("Users List", "ShowUsers")
+    @Html.RouteLink("Add Role", new { controller = "Role", action = "Index" })
+    @Html.RouteLink("Roles List", new { controller = "Role", action = "ShowRole" })
+</div>
+</body>
+</html>
+

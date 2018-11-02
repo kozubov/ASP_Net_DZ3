@@ -1,0 +1,47 @@
+﻿@using ASP_3.Models;
+@{
+    Layout = null;
+    IEnumerable<User> users = ViewBag.listUser;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/CSS/Style.css" />
+    <title>Users List</title>
+</head>
+<body>
+    <div class="title_form">
+        <h1>Users List</h1>
+    </div>
+<div class="div_table">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Login</th>
+            <th>More Info</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (User VARIABLE in users)
+        {
+            <tr>
+                <td>@VARIABLE.Id</td>
+                <td>@VARIABLE.Login</td>
+                <td>@Html.ActionLink("More Info", "More", new { VARIABLE.Id }, new { @class = "links" })</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { VARIABLE.Id }, new { @class = "links" })</td>
+                <td>@Html.ActionLink("Delete", "DeleteUser", new { VARIABLE.Id }, new { @class = "links" })</td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="menu">
+    @Html.ActionLink("Add User", "Index")
+    @Html.ActionLink("Users List", "ShowUsers")
+    @Html.RouteLink("Add Role", new { controller = "Role", action = "Index" })
+    @Html.RouteLink("Roles List", new { controller = "Role", action = "ShowRole" })
+</div>
+</body>
+</html>
